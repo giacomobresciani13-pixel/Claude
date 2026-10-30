@@ -1,0 +1,10 @@
+{
+  "name": "China Ready — guida per il primo viaggio in Cina",
+  "short_name": "China Ready",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f4f1",
+  "theme_color": "#c8102e",
+  "lang": "it",
+  "icons": [{ "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
