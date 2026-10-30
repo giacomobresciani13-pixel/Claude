@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>China Ready</title>
+  <meta name="description" content="Guida pratica per chi va in Cina per la prima volta: mappa 3D, setup delle app, frasi utili.">
+  <meta name="theme-color" content="#c8102e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">中</span> China Ready</div>
+    <select id="citySelect" aria-label="Città"></select>
+  </header>
+
+  <main>
+    <!-- MAPPA -->
+    <section id="view-map" class="view active">
+      <div id="map"></div>
+      <div id="mapFallback" class="map-fallback" hidden>
+        La mappa non si è caricata (rete lenta o bloccata). L'elenco dei luoghi funziona comunque.
+      </div>
+      <div class="map-tools">
+        <button id="btn3d" class="pill on" title="Vista 3D">3D</button>
+        <button id="btnTerrain" class="pill" title="Rilievo del terreno">⛰️</button>
+        <button id="btnSpin" class="pill" title="Gira intorno">⟳</button>
+      </div>
+      <aside class="panel" id="panel">
+        <div class="panel-handle" id="panelHandle"></div>
+        <p class="city-intro" id="cityIntro"></p>
+        <div class="chips" id="catChips"></div>
+        <input id="search" type="search" placeholder="Cerca luogo, piatto, 中文…" autocomplete="off">
+        <ul class="place-list" id="placeList"></ul>
+      </aside>
+    </section>
+
+    <!-- SETUP -->
+    <section id="view-setup" class="view">
+      <div class="scroll">
+        <div class="progress-card">
+          <div class="progress-head">
+            <h2>Il tuo setup</h2>
+            <span id="progressPct">0%</span>
+          </div>
+          <div class="bar"><div id="progressBar"></div></div>
+          <p class="muted" id="progressNext"></p>
+        </div>
+        <div id="guideList"></div>
+      </div>
+    </section>
+
+    <!-- FRASI -->
+    <section id="view-phrases" class="view">
+      <div class="scroll">
+        <p class="muted">Tocca una frase per mostrarla a schermo intero, 🔊 per ascoltarla.</p>
+        <div id="phraseList"></div>
+      </div>
+    </section>
+
+    <!-- SOS -->
+    <section id="view-sos" class="view">
+      <div class="scroll" id="sosContent"></div>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-view="map" class="active"><span>🗺️</span>Mappa</button>
+    <button data-view="setup"><span>✅</span>Setup</button>
+    <button data-view="phrases"><span>💬</span>Frasi</button>
+    <button data-view="sos"><span>🆘</span>SOS</button>
+  </nav>
+
+  <!-- Scheda luogo -->
+  <div class="sheet" id="placeSheet" hidden>
+    <div class="sheet-card">
+      <button class="close" data-close aria-label="Chiudi">✕</button>
+      <div id="placeBody"></div>
+    </div>
+  </div>
+
+  <!-- Schermo intero "mostra al tassista" -->
+  <div class="showcard" id="showCard" hidden>
+    <div class="show-zh" id="showZh"></div>
+    <div class="show-py" id="showPy"></div>
+    <div class="show-it" id="showIt"></div>
+    <p class="show-hint">Tocca per chiudere</p>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="js/data/places.js"></script>
+  <script src="js/data/guide.js"></script>
+  <script src="js/geo.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
